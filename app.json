@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TP-React_Native",
-    "slug": "TP-React_Native",
+    "slug": "tp-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.phoenix7290.tpreactnative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e0a1a477-6a1f-499f-a1f9-644696757730"
+      }
+    },
+    "owner": "phoenix7290"
   }
 }
