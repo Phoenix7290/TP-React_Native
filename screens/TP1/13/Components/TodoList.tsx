@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, FlatList, StyleSheet } from 'react-native';
-import TodoItem from './TodoItem';
+import TodoItem from './TodoItem.tsx';
 
 interface TodoListProps {
   items: { name: string; category: string }[];

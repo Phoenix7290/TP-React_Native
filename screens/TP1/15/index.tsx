@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Question from './components/Question';
-import Result from './components/Result';
+import Question from './components/Question.tsx';
+import Result from './components/Result.tsx';
 import { View } from 'react-native';
 
 import Style from "./styles";

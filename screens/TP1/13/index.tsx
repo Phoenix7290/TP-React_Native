@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Button, FlatList, StyleSheet } from 'react-native';
-import TodoList from './Components/TodoList';
+import TodoList from './Components/TodoList.tsx';
 
 interface Task {
   name: string;

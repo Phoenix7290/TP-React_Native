@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Button from './components/Button';
-import ImageDisplay from './components/Image';
+import Button from './components/Button/index.tsx';
+import ImageDisplay from './components/Image/index.tsx';
 
 const images = [
   { uri: 'https://via.placeholder.com/150/FF0000', title: 'Imagem Vermelha' },

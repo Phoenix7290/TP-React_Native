@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from 'react-native';
-import CardMovie from "./components/CardMovie";
+import CardMovie from "./components/CardMovie/index.tsx";
 
 export default function App() {
     const movie = {
