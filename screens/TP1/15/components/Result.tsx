@@ -9,7 +9,7 @@ interface ResultProps {
 
 function Result({ score, total }: ResultProps) {
   return (
-    <View style={styles.optionsButtonHover}>
+    <View style={styles.optionsButton}>
       <Text>Quiz Finished!</Text>
       <Text>Your score is {score} out of {total}</Text>
     </View>
