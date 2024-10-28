@@ -16,7 +16,7 @@ export default function App() {
 
     return (
         <View style={styles.container}>
-            <Text>Enter a number:</Text>
+            <Text>Coloque um número:</Text>
             <TextInput
                 style={styles.input}
                 keyboardType="numeric"

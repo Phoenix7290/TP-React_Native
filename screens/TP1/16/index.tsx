@@ -8,13 +8,13 @@ const App = () => {
 
       <Text style={styles.sectionTitle}>Introdução</Text>
       <Text style={styles.paragraph}>
-        A arquitetura de uma aplicação React Native é um tema essencial para entender como essa
-        tecnologia facilita o desenvolvimento de aplicativos móveis híbridos, oferecendo uma
-        experiência nativa para usuários de iOS e Android. React Native foi desenvolvido pelo
-        Facebook e se baseia na biblioteca React, amplamente usada para o desenvolvimento web.
-        A grande diferença é que, enquanto React é focado em criar interfaces para navegadores,
-        React Native adapta os conceitos do React para a criação de aplicativos móveis, traduzindo
-        componentes JavaScript em elementos nativos de cada plataforma.
+        A arquitetura de uma aplicação React Native é essencial para entender como essa
+        tecnologia facilita o desenvolvimento de aplicativos móveis, como IOS e Android assim como 
+        para o modelo Web, seguindo o logo do Native de "Learn Once, Build Everywhere". React Native 
+        foi desenvolvido pelo Facebook e se baseia na biblioteca React, amplamente usada para o 
+        desenvolvimento web. A grande diferença é que, enquanto React é focado em criar interfaces 
+        para navegadores, React Native adapta os conceitos do React para a criação de aplicativos 
+        móveis, traduzindo componentes JavaScript em elementos nativos de cada plataforma.
       </Text>
 
       <Text style={styles.sectionTitle}>Desenvolvimento</Text>
@@ -26,6 +26,8 @@ const App = () => {
         camada intermediária que facilita a comunicação entre o JavaScript e o código nativo (iOS
         e Android). Por fim, o código nativo é responsável por acessar APIs e funcionalidades
         específicas de cada sistema operacional, como câmera, localização e notificações.
+
+        <Text>Fonte no final do conteúdo.</Text>
       </Text>
 
       <Text style={styles.subtitle}>Comparação entre React e React Native</Text>
