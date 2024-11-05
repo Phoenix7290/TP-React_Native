@@ -1,4 +1,3 @@
-import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import TP1 from "../TP1/index.tsx";
 import TP1_01 from "../TP1/01/index.tsx";
@@ -23,23 +22,23 @@ const Stack = createStackNavigator();
 export default function TP1Stack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="TP1" component={TP1} />
-      <Stack.Screen name="TP1 - 1" component={TP1_01} />
-      <Stack.Screen name="TP1 - 2" component={TP1_02} />
-      <Stack.Screen name="TP1 - 3" component={TP1_03} />
-      <Stack.Screen name="TP1 - 4" component={TP1_04} />
-      <Stack.Screen name="TP1 - 5" component={TP1_05} />
-      <Stack.Screen name="TP1 - 6" component={TP1_06} />
-      <Stack.Screen name="TP1 - 7" component={TP1_07} />
-      <Stack.Screen name="TP1 - 8" component={TP1_08} />
-      <Stack.Screen name="TP1 - 9" component={TP1_09} />
-      <Stack.Screen name="TP1 - 10" component={TP1_10} />
-      <Stack.Screen name="TP1 - 11" component={TP1_11} />
-      <Stack.Screen name="TP1 - 12" component={TP1_12} />
-      <Stack.Screen name="TP1 - 13" component={TP1_13} />
-      <Stack.Screen name="TP1 - 14" component={TP1_14} />
-      <Stack.Screen name="TP1 - 15" component={TP1_15} />
-      <Stack.Screen name="TP1 - 16" component={TP1_16} />
+      <Stack.Screen name="Exercícios:" component={TP1} />
+      <Stack.Screen name="Exercício - 1" component={TP1_01} />
+      <Stack.Screen name="Exercício - 2" component={TP1_02} />
+      <Stack.Screen name="Exercício - 3" component={TP1_03} />
+      <Stack.Screen name="Exercício - 4" component={TP1_04} />
+      <Stack.Screen name="Exercício - 5" component={TP1_05} />
+      <Stack.Screen name="Exercício - 6" component={TP1_06} />
+      <Stack.Screen name="Exercício - 7" component={TP1_07} />
+      <Stack.Screen name="Exercício - 8" component={TP1_08} />
+      <Stack.Screen name="Exercício - 9" component={TP1_09} />
+      <Stack.Screen name="Exercício - 10" component={TP1_10} />
+      <Stack.Screen name="Exercício - 11" component={TP1_11} />
+      <Stack.Screen name="Exercício - 12" component={TP1_12} />
+      <Stack.Screen name="Exercício - 13" component={TP1_13} />
+      <Stack.Screen name="Exercício - 14" component={TP1_14} />
+      <Stack.Screen name="Exercício - 15" component={TP1_15} />
+      <Stack.Screen name="Exercício - 16" component={TP1_16} />
     </Stack.Navigator>
   );
 }

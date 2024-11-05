@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, StatusBar, StyleSheet, Linking } from 'react-native';
 
 export default function Home() {
@@ -15,7 +14,7 @@ export default function Home() {
           <Text style={style.paragraph}>Exemplo: import Component from "./Folder/index.js"</Text>
           <Text style={style.footer}>Bons TPs!</Text>
         </View>
-        <StatusBar/>
+        <StatusBar />
     </View>
   );
 }

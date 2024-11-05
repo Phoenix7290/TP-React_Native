@@ -7,7 +7,7 @@ type RootStackParamList = {
   [key: string]: { id: number };
 };
 
-export default function TP1() {
+export default function TP2() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   return (
