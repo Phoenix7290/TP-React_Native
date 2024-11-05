@@ -1,40 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Button from './components/Button/index.tsx';
 
 const App = () => {
-  const [selectedColor, setSelectedColor] = useState('');
-
-  const handlePress = (color: string) => {
-    setSelectedColor(color);
-  };
-
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Você pressionou: {selectedColor}</Text>
-      <View style={styles.buttonContainer}>
-        <Button label="Vermelho" onPress={() => handlePress('Vermelho')} color='#FF0000' />
-        <Button label="Verde" onPress={() => handlePress('Verde')} color='#00ff00'/>
-        <Button label="Azul" onPress={() => handlePress('Azul')} color='#0080ff'/>
-      </View>
+      <Text style={styles.box}>Item 1</Text>
+      <Text style={styles.box}>Item 2</Text>
+      <Text style={styles.box}>Item 3</Text>
+      <Text style={styles.box}>Item 4</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
+    flexWrap: 'wrap',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
+    padding: 10,
+  },
+  box: {
+    width: '40%',
+    padding: 20,
+    marginBottom: 10,
+    backgroundColor: 'skyblue',
+    margin: 5,
+    borderRadius: 5,
+    textAlign: 'center',
   },
 });
 

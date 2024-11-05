@@ -1,18 +1,44 @@
-import React from "react";
-import { View, Text } from 'react-native';
-import CardMovie from "./components/CardMovie/index.tsx";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
-export default function App() {
-    const movie = {
-        img: "https://th.bing.com/th/id/OIP.611QCafpYEN0ak-bkiC8HgHaJQ?rs=1&pid=ImgDetMain",
-        title: 'Robo Selvagem',
-        year: 2024,
-        rating: 9,
-    }
-
-    return (
+const App = () => {
+  return (
+    <View style={styles.container}>
         <View>
-            <CardMovie movie={movie}></CardMovie>
+            <FastImage
+                source={{
+                    uri: 'https://via.placeholder.com/150',
+                    priority: FastImage.priority.high,
+                }}
+                style={{ width: 150, height: 150 }}
+            />
+            <Text>Nome</Text>
+            <Text>Descrição</Text>
+            <Text>Data</Text>
         </View>
-    )
-}
+      <Text style={styles.box}>Item 1</Text>
+      <Text style={styles.box}>Item 2</Text>
+      <Text style={styles.box}>Item 3</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    height: '100%',
+  },
+  box: {
+    padding: 20,
+    width: '100%',
+    textAlign: 'center',
+    backgroundColor: 'skyblue',
+    margin: 5,
+    borderRadius: 5,
+  },
+});
+
+export default App;
