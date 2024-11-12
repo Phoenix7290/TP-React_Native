@@ -1,18 +1,22 @@
-
+import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { NavigationProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RouteProp } from '@react-navigation/native';
 
+type RootStackParamList = {
+  Products: undefined;
+  ShopList: { shopListProducts: { id: number; name: string; price: number }[] };
+};
 
-interface Props {
-  route: {
-    params: {
-      shopListProducts: { nome: string; preco: number }[];
-    };
-  };
-  navigation: NavigationProp<any>;
-}
+type ShopListScreenRouteProp = RouteProp<RootStackParamList, 'ShopList'>;
+type ShopListScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ShopList'>;
 
-const TelaCarrinho = ({ route, navigation }: Props) => {
+type Props = {
+  route: ShopListScreenRouteProp;
+  navigation: ShopListScreenNavigationProp;
+};
+
+const ShopListScreen: React.FC<Props> = ({ route, navigation }) => {
   const { shopListProducts } = route.params;
 
   return (
@@ -21,18 +25,15 @@ const TelaCarrinho = ({ route, navigation }: Props) => {
       {shopListProducts.length === 0 ? (
         <Text>O carrinho está vazio.</Text>
       ) : (
-        shopListProducts.map((produto, index) => (
+        shopListProducts.map((product, index) => (
           <View key={index} style={{ marginBottom: 10 }}>
-            <Text>{produto.nome} - R${produto.preco}</Text>
+            <Text>{product.name} - R${product.price}</Text>
           </View>
         ))
       )}
-      <Button
-        title="Limpar Carrinho"
-        onPress={() => navigation.navigate('Produtos')}
-      />
+      <Button title="Limpar Carrinho" onPress={() => navigation.navigate('Products')} />
     </View>
   );
 };
 
-export default TelaCarrinho;
+export default ShopListScreen;

@@ -1,28 +1,22 @@
-
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import TelaProdutos from './Product.jsx';
-import TelaCarrinho from './ShopList.jsx';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import Products from './Product';
+import ShopList from './ShopList';
 
-const Stack = createStackNavigator();
-
-const App = () => {
-  return (
-    <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Products">
-        <Stack.Screen
-          name="Products"
-          component={TelaProdutos}
-          options={{ title: 'Lista de Produtos' }}
-        />
-        <Stack.Screen
-          name="ShopList"
-          component={TelaCarrinho}
-          options={{ title: 'Carrinho de Compras' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+type RootStackParamList = {
+  Products: undefined;
+  ShopList: { shopListProducts: { id: number; name: string; price: number }[] };
 };
+
+const Stack = createStackNavigator<RootStackParamList>();
+
+const App = () => (
+  <NavigationContainer independent={true}>
+    <Stack.Navigator initialRouteName="Products">
+      <Stack.Screen name="Products" component={Products} options={{ title: 'Lista de Produtos' }} />
+      <Stack.Screen name="ShopList" component={ShopList} options={{ title: 'Carrinho de Compras' }} />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
 export default App;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Button from './components/Button/index.tsx';
+import Button from './components/button/index.tsx';
 
 const App = () => {
   const [selectedColor, setSelectedColor] = useState('');
