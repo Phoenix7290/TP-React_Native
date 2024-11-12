@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, FlatList, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import TodoList from './Components/TodoList.tsx';
 
 interface Task {

@@ -1,28 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import Component from './components/index';
+import { View } from 'react-native';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.box}>Item 1</Text>
-      <Text style={styles.box}>Item 2</Text>
-      <Text style={styles.box}>Item 3</Text>
+    <View>
+      <Component text1='Item A' text2='Item B' text3='Item C'/>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    padding: 10,
-  },
-  box: {
-    padding: 20,
-    backgroundColor: 'skyblue',
-    margin: 5,
-    borderRadius: 5,
-  },
-});
 
 export default App;

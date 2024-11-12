@@ -1,92 +1,30 @@
 import { useState } from 'react';
-import Question from './components/Question.tsx';
-import Result from './components/Result.tsx';
-import { View } from 'react-native';
+import { View, Text, Button, FlatList } from 'react-native';
+import Preferencia from './preference.tsx';
+import Afinidade from './affinity.tsx';
 
-import Style from "./styles";
+export default function App() {
+    const [pagina, setPagina] = useState('preferencia');
+    const [respostas, setRespostas] = useState({});
 
-const questions = [
-    {
-        question: 'What is the capital of France?',
-        options: ['Berlin', 'Madrid', 'Paris', 'Lisbon'],
-        answer: 'Paris'
-    },
-    {
-        question: 'Who is CEO of Tesla Motors?',
-        options: ['Bill Gates', 'Steve Jobs', 'Elon Musk', 'Tony Stark'],
-        answer: 'Elon Musk'
-    },
-    {
-        question: 'The iPhone was created by which company?',
-        options: ['Apple', 'Intel', 'Amazon', 'Microsoft'],
-        answer: 'Apple'
-    },
-    {
-        question: 'How many Harry Potter books are there?',
-        options: ['1', '4', '6', '7'],
-        answer: '7'
-    },
-    {
-        question: 'How many continents are there?',
-        options: ['5', '6', '7', '8'],
-        answer: '7'
-    },
-    {
-        question: 'What is the capital of Portugal?',
-        options: ['Berlin', 'Madrid', 'Paris', 'Lisbon'],
-        answer: 'Lisbon'
-    },
-    {
-        question: 'Who is CEO of SpaceX?',
-        options: ['Bill Gates', 'Steve Jobs', 'Elon Musk', 'Tony Stark'],
-        answer: 'Elon Musk'
-    },
-    {
-        question: 'The Alexa model was created by which company?',
-        options: ['Apple', 'Intel', 'Amazon', 'Microsoft'],
-        answer: 'Amazon'
-    },
-    {
-        question: 'How many Lord of the Rings books are there?',
-        options: ['1', '3', '4', '7'],
-        answer: '3'
-    },
-    {
-        question: 'How many oceans are there?',
-        options: ['3', '4', '5', '6'],
-        answer: '5'
-    }
-];
+    const itens = ["Filme A", "Música B", "Jogo C", "Filme D", "Música E"];
 
-function App() {
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [score, setScore] = useState(0);
-    const [showResult, setShowResult] = useState(false);
-
-    const handleAnswer = (answer: string) => {
-        if (answer === questions[currentQuestion].answer) {
-            setScore(score + 1);
-        }
-        const nextQuestion = currentQuestion + 1;
-        if (nextQuestion < questions.length) {
-            setCurrentQuestion(nextQuestion);
-        } else {
-            setShowResult(true);
-        }
+    const usuarios = [
+        { nome: "Usuário 1", respostas: { "Filme A": true, "Música B": false, "Jogo C": true, "Filme D": true, "Música E": false } },
+        { nome: "Usuário 2", respostas: { "Filme A": false, "Música B": true, "Jogo C": true, "Filme D": false, "Música E": true } },
+        { nome: "Usuário 3", respostas: { "Filme A": true, "Música B": false, "Jogo C": true, "Filme D": true, "Música E": true } },
+    ];
+    const alternarTela = () => {
+        setPagina(pagina === 'preferencia' ? 'afinidade' : 'preferencia');
     };
 
     return (
-        <View style={Style.app}>
-            {!showResult ? (
-                <Question
-                    question={questions[currentQuestion]}
-                    handleAnswer={handleAnswer}
-                />
+        <View style={{ flex: 1, padding: 20 }}>
+            {pagina === 'preferencia' ? (
+                <Preferencia itens={itens} respostas={respostas} setRespostas={setRespostas} alternarTela={alternarTela} />
             ) : (
-                <Result score={score} total={questions.length} />
+                <Afinidade respostas={respostas} usuarios={usuarios} alternarTela={alternarTela} />
             )}
         </View>
     );
 }
-
-export default App;

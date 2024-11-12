@@ -1,44 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { View } from 'react-native';
+import Component from './components/index';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-        <View>
-            <FastImage
-                source={{
-                    uri: 'https://via.placeholder.com/150',
-                    priority: FastImage.priority.high,
-                }}
-                style={{ width: 150, height: 150 }}
-            />
-            <Text>Nome</Text>
-            <Text>Descrição</Text>
-            <Text>Data</Text>
-        </View>
-      <Text style={styles.box}>Item 1</Text>
-      <Text style={styles.box}>Item 2</Text>
-      <Text style={styles.box}>Item 3</Text>
+    <View>
+      <Component avatar="https://i.pinimg.com/736x/f5/6e/82/f56e82f61e7d95338b4183d4e348c025--nobunagas-ambition-samurai.jpg" name='Nobunaga' adress='Japão - JP' number='(99) 9 1234-1234'/>
+      <Component avatar="https://th.bing.com/th/id/OIP.WiimiE_e52Ek-suZlLgZWwHaJP?rs=1&pid=ImgDetMain" name='Jakob' adress='Porto Alegre - RS' number='(11) 9 5678-9123'/>
+      <Component avatar="https://th.bing.com/th/id/OIP.R6S1k1xJWDiQIusWM4LG0wHaLH?rs=1&pid=ImgDetMain" name='Lara' adress='São Paulo - SP' number='(21) 9 8765-4321'/>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    height: '100%',
-  },
-  box: {
-    padding: 20,
-    width: '100%',
-    textAlign: 'center',
-    backgroundColor: 'skyblue',
-    margin: 5,
-    borderRadius: 5,
-  },
-});
 
 export default App;
