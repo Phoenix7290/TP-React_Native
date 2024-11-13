@@ -1,47 +1,35 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+// App.tsx
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import DetailsScreen from './screens/DetailsScreen';
 
-export default function App() {
-    const [number, setNumber] = useState<string>('');
-    const [result, setResult] = useState<string>('');
+export type RootStackParamList = {
+  Home: undefined;
+  Details: { post: Post };
+};
 
-    const validateEvenOdd = () => {
-        const num = parseInt(number);
-        if (isNaN(num)) {
-            setResult('Por favor, coloque um número válido.');
-        } else {
-            setResult(num % 2 === 0 ? 'Par' : 'Ímpar');
-        }
-    };
-
-    return (
-        <View style={styles.container}>
-            <Text>Coloque um número:</Text>
-            <TextInput
-                style={styles.input}
-                keyboardType="numeric"
-                value={number}
-                onChangeText={setNumber}
-            />
-            <Button title="Valide" onPress={validateEvenOdd} />
-            {result !== '' && <Text>{result}</Text>}
-        </View>
-    );
+export interface Post {
+  id: number;
+  title: string;
+  summary: string;
+  likes: number;
+  shares: number;
+  content: string;
+  author: string;
+  date: string;
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 12,
-        paddingHorizontal: 8,
-        width: '80%',
-    },
-});
+const Stack = createStackNavigator<RootStackParamList>();
+
+export default function App() {
+  return (
+    <NavigationContainer independent={true}>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Postagens' }} />
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Detalhes' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
