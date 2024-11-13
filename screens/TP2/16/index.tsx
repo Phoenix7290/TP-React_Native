@@ -11,6 +11,7 @@ import Configuracoes from './Config.tsx';
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  // it works separately not together.
   return (
     <NavigationContainer independent={true}>
       <Drawer.Navigator initialRouteName="FeedContatos">

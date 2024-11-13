@@ -12,6 +12,7 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
+    // it works separately not together.
     <NavigationContainer independent={true}>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
