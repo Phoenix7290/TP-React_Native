@@ -1,70 +1,73 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
 
-function getAge(day: number, mes: number, ano: number) : {ageYear: number, ageMonth: number} {
-    const currentDate = new Date();
-    let birthDate = new Date(ano, mes - 1, day);
+const ListaProposicoes = () => {
+    const [dados, setDados] = useState<any[]>([]);
+    const [pagina, setPagina] = useState(1);
+    const [carregando, setCarregando] = useState(false);
 
-    let ageYear = currentDate.getFullYear() - birthDate.getFullYear();
-    let ageMonth = currentDate.getMonth() - birthDate.getMonth();
 
-    if (currentDate.getDate() < day) {
-        ageMonth--;
-    }
-
-    if (ageMonth < 0) {
-        ageYear--;
-        ageMonth += 12;
-    }
-
-    const age = { ageYear: ageYear, ageMonth: ageMonth };
-    return age;
-}
-
-export default function App() {
-    const [date, setDate] = useState<string>('');
-    const [result, setResult] = useState<string>('');
-
-    const printAge = () => {
-        const [day, month, year] = date.split('/').map(Number);
-        if (isNaN(day) || isNaN(month) || isNaN(year)) {
-            setResult('Data inválida');
-            return;
+    const carregarDados = async () => {
+        if (carregando) return;
+        setCarregando(true);
+        try {
+            const resposta = await fetch(`https://dadosabertos.camara.leg.br/api/v2/proposicoes?pagina=${pagina}&itens=10`);
+            const resultado = await resposta.json();
+            setDados([...dados, ...resultado.dados]);
+            setPagina(pagina + 1);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setCarregando(false);
         }
-        let age = getAge(day, month, year);
-        setResult(`Idade: ${age.ageYear} anos e ${age.ageMonth} meses`);
-    }
+    };
+
+    useEffect(() => {
+        carregarDados();
+    }, []);
+
+    const renderItem = ({ item }: { item: any }) => (
+        <View style={styles.itemContainer}>
+            <Text style={styles.titulo}>{item.ementa || 'Sem título'}</Text>
+            <Text style={styles.detalhes}>ID: {item.id}</Text>
+        </View>
+    );
 
     return (
         <View style={styles.container}>
-            <TextInput
-                style={styles.input}
-                placeholder="day/Mês/Ano"
-                value={date}
-                onChangeText={setDate}
+            <FlatList
+                data={dados}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={renderItem}
+                onEndReached={carregarDados}
+                onEndReachedThreshold={0.5}
+                ListFooterComponent={carregando ? <ActivityIndicator size="large" color="#0000ff" /> : null}
             />
-            <Button title="Idade" onPress={printAge} />
-            {result ? <Text style={styles.result}>{result}</Text> : null}
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        padding: 16,
+        padding: 10,
+        backgroundColor: '#fff',
     },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 12,
-        paddingHorizontal: 8,
+    itemContainer: {
+        backgroundColor: '#f9f9f9',
+        padding: 15,
+        marginBottom: 10,
+        borderRadius: 5,
+        elevation: 2,
     },
-    result: {
-        marginTop: 20,
-        fontSize: 18,
+    titulo: {
+        fontSize: 16,
         fontWeight: 'bold',
     },
+    detalhes: {
+        fontSize: 14,
+        color: '#666',
+    },
 });
+
+export default ListaProposicoes;

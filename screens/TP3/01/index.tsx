@@ -1,17 +1,9 @@
-import React from "react";
 import { View, Text } from 'react-native';
 
-interface AppProps {
-    seuNomeCompleto?: string;
-    horaAtual?: string;
-}
-
-const App: React.FC<AppProps> = ({ seuNomeCompleto = "Fulano de Tal", horaAtual = new Date().toLocaleTimeString() }) => {
+export default function App() {
     return (
         <View>
-            <Text>Olá {seuNomeCompleto}! Agora são {horaAtual}</Text>
+            <Text>Hello World</Text>
         </View>
-    );
-};
-
-export default App;
+    )
+}

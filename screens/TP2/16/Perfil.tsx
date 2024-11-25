@@ -1,6 +1,6 @@
 
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function Perfil() {
   return (
@@ -10,9 +10,7 @@ export default function Perfil() {
         style={styles.profileImage}
       />
       
-      
       <Text style={styles.userName}>João da Silva</Text>
-      
       
       <Text style={styles.bio}>Aventureiro, fotógrafo e amante de viagens!</Text>
 

@@ -1,41 +1,29 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Button from './components/Button/index.tsx';
 
-const App = () => {
-  const [selectedColor, setSelectedColor] = useState('');
+import { View, StyleSheet } from 'react-native';
+import Lista from './Lista.jsx';
 
-  const handlePress = (color: string) => {
-    setSelectedColor(color);
-  };
+export default function App() {
+  const tarefas = [
+    { id: 1, nome: 'Comprar pão' },
+    { id: 2, nome: 'Fazer exercícios' },
+    { id: 3, nome: 'Estudar React Native' },
+    { id: 4, nome: 'Ler um livro' },
+    { id: 5, nome: 'Organizar a casa' },
+  ];
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Você pressionou: {selectedColor}</Text>
-      <View style={styles.buttonContainer}>
-        <Button label="Vermelho" onPress={() => handlePress('Vermelho')} color='#FF0000' />
-        <Button label="Verde" onPress={() => handlePress('Verde')} color='#00ff00'/>
-        <Button label="Azul" onPress={() => handlePress('Azul')} color='#0080ff'/>
-      </View>
+      <Lista itens={tarefas} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
+    backgroundColor: '#f4f4f4',
+    padding: 20,
   },
 });
-
-export default App;

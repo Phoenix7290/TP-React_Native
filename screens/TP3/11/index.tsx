@@ -1,53 +1,39 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-
-const isPalindrome = (str: string) => {
-    const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
-    return cleanedStr === cleanedStr.split('').reverse().join('');
-};
+import { useState, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import ListaProdutos from './ListaProdutos';
+import OrdenarProdutos from './OrdenarProdutos';
 
 export default function App() {
-    const [input, setInput] = useState('');
-    const [result, setResult] = useState('');
+  const [criterioOrdenacao, setCriterioOrdenacao] = useState('nome-asc');
+  const [produtos, setProdutos] = useState<{ id: string; nome: string; preco: number; }[]>([]);
+  const [carregando, setCarregando] = useState(true);
 
-    const checkPalindrome = () => {
-        if (isPalindrome(input)) {
-            setResult('É um palíndromo');
-        } else {
-            setResult('Não é um palíndromo');
-        }
-    };
 
-    return (
-        <View style={styles.container}>
-            <TextInput
-                style={styles.input}
-                placeholder="Digite um texto"
-                value={input}
-                onChangeText={setInput}
-            />
-            <Button title="Verificar" onPress={checkPalindrome} />
-            {result ? <Text style={styles.result}>{result}</Text> : null}
-        </View>
-    );
+  useEffect(() => {
+    setTimeout(() => {
+      const dadosProdutos = [
+        { id: '1', nome: 'Café', preco: 5.0 },
+        { id: '2', nome: 'Açúcar', preco: 3.5 },
+        { id: '3', nome: 'Leite', preco: 4.0 },
+        { id: '4', nome: 'Pão', preco: 2.5 },
+      ];
+      setProdutos(dadosProdutos);
+      setCarregando(false);
+    }, 2000);
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <OrdenarProdutos setCriterioOrdenacao={setCriterioOrdenacao} />
+      <ListaProdutos produtos={produtos} criterioOrdenacao={criterioOrdenacao} carregando={carregando} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 16,
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 12,
-        paddingHorizontal: 8,
-    },
-    result: {
-        marginTop: 20,
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
+  container: {
+    flex: 1,
+    paddingTop: 50,
+    backgroundColor: '#f0f0f0',
+  },
 });

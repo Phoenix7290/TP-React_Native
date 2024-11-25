@@ -4,6 +4,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "allowImportingTsExtensions": true,
+    "types": ["react-native"],
     "typeRoots": ["./node_modules/@types", "./types"]
   }
 }

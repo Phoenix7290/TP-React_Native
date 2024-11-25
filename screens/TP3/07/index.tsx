@@ -1,47 +1,38 @@
-import React, { useState } from "react";
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import Filter from './Filter.jsx';
+import ProductList from './ProductList.jsx';
+
+const productsData = [
+    { id: '1', name: 'Shirt' },
+    { id: '2', name: 'Boots' },
+    { id: '3', name: 'Hat' },
+    { id: '4', name: 'Pants' },
+    { id: '5', name: 'Coat' },
+];
 
 export default function App() {
-    const [counter, setCounter] = useState<number>(0);
+    const [products, setProducts] = useState(productsData);
 
-    function increment() {
-        setCounter(counter + 1);
-    }
-
-    function decrement() {
-        setCounter(counter - 1);
-    }
+    const filterProducts = (text: string) => {
+        const filtered = productsData.filter(product =>
+            product.name.toLowerCase().includes(text.toLowerCase())
+        );
+        setProducts(filtered);
+    };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Contador: {counter}</Text>
-            <Pressable style={styles.touchable} onPress={() => increment()}>
-                <Text style={styles.touchableText}>Incremento</Text>
-            </Pressable>
-            <Pressable style={styles.touchable} onPress={() => decrement()}>
-                <Text style={styles.touchableText}>Decremento</Text>
-            </Pressable>
+            <Filter onFilter={filterProducts} />
+            <ProductList products={products} />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        padding: 16,
     },
-    touchable: {
-        marginTop: 10,
-        borderWidth: 2,
-        borderRadius: 5,
-        padding: 10,
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    touchableText: {
-        fontSize: 18,
-    }
 });

@@ -6,10 +6,12 @@ const viagensContatos = [
   { id: '2', destination: 'Tokyo', beggining: '2024-03-10', end: '2024-03-15', rating: 4 },
 ];
 
-export default function FeedContatos({ navigation }) {
-  const [curtidas, setCurtidas] = useState({});
+import { NavigationProp } from '@react-navigation/native';
 
-  const curtirPostagem = (id) => {
+export default function FeedContatos({ navigation }: { navigation: NavigationProp<any> }) {
+  const [curtidas, setCurtidas] = useState<{ [key: string]: number }>({});
+
+  const curtirPostagem = (id: string) => {
     setCurtidas({ ...curtidas, [id]: (curtidas[id] || 0) + 1 });
   };
 

@@ -1,55 +1,30 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import ListaProdutos from './ListaProdutos';
+import OrdenarProdutos from './OrdenarProdutos';
 
 export default function App() {
-    const [number, setNumber] = useState<string>('');
-    const [result, setResult] = useState<string>('');
+  const [criterioOrdenacao, setCriterioOrdenacao] = useState('nome-asc');
 
-    function isPrime(num: number): boolean {
-        if (num <= 1) return false;
-        for (let i = 2, sqrt = Math.sqrt(num); i <= sqrt; i++) {
-            if (num % i === 0) return false; 
-        }
-        return true; 
-    }
+  const produtos = [
+    { id: '1', nome: 'Café', preco: 5.0 },
+    { id: '2', nome: 'Açúcar', preco: 3.5 },
+    { id: '3', nome: 'Leite', preco: 4.0 },
+    { id: '4', nome: 'Pão', preco: 2.5 },
+  ];
 
-    const validatePrime = () => {
-        const num = parseInt(number);
-        if (isNaN(num)) {
-            setResult('Por favor, coloque um número válido.');
-        } else {
-            setResult(isPrime(num) ? 'Primo' : 'Não primo');
-        }
-    }
-
-    return (
-        <View style={styles.container}>
-            <Text>Enter a number:</Text>
-            <TextInput
-                style={styles.input}
-                keyboardType="numeric"
-                value={number}
-                onChangeText={setNumber}
-            />
-            <Button title="Valide" onPress={validatePrime} />
-            {result !== '' && <Text>{result}</Text>}
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <OrdenarProdutos setCriterioOrdenacao={setCriterioOrdenacao} />
+      <ListaProdutos produtos={produtos} criterioOrdenacao={criterioOrdenacao} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 12,
-        paddingHorizontal: 8,
-        width: '80%',
-    },
+  container: {
+    flex: 1,
+    paddingTop: 50,
+    backgroundColor: '#f0f0f0',
+  },
 });

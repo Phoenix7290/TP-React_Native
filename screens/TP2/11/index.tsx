@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationIndependentTree } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -61,14 +61,16 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer independent={true}>
-      <Tab.Navigator>
-        <Tab.Screen name="Pessoal" component={PersonalInfoScreen} />
-        <Tab.Screen name="Acadêmico" component={AcademicInfoScreen} />
-        <Tab.Screen name="Experiências" component={ExperienceScreen} />
-        <Tab.Screen name="Habilidades" component={SkillsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <NavigationIndependentTree>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Pessoal" component={PersonalInfoScreen} />
+          <Tab.Screen name="Acadêmico" component={AcademicInfoScreen} />
+          <Tab.Screen name="Experiências" component={ExperienceScreen} />
+          <Tab.Screen name="Habilidades" component={SkillsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </NavigationIndependentTree>
   );
 }
 

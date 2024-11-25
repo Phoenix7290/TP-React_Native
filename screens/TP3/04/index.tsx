@@ -1,37 +1,26 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import Button from './components/Button/index.tsx';
-import ImageDisplay from './components/Image/index.tsx';
+import { View, StyleSheet } from 'react-native';
+import TaskList from './TaskList.jsx';
 
-const images = [
-  { uri: 'https://via.placeholder.com/150/FF0000', title: 'Imagem Vermelha' },
-  { uri: 'https://via.placeholder.com/150/00FF00', title: 'Imagem Verde' },
-  { uri: 'https://via.placeholder.com/150/0000FF', title: 'Imagem Azul' },
-];
+export default function App() {
+  const tasksByDay = [
+    { title: 'Today', data: ['Buy bread', 'Exercise'] },
+    { title: 'Tomorrow', data: ['Study React Native', 'Read a book'] },
+    { title: 'Next Week', data: ['Organize the house'] },
+  ];
 
-const App = () => {
-  const [currentImage, setCurrentImage] = useState(images[0]);
-
-  const handleRandomImage = () => {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    setCurrentImage(images[randomIndex]);
-  };
-
-  // Existe um lag de 1.5s que não é perceptível no emulador, mas é perceptível em um dispositivo físico
   return (
     <View style={styles.container}>
-      <ImageDisplay image={currentImage.uri} title={currentImage.title} />
-      <Button label="Trocar Imagem" onPress={handleRandomImage} />
+      <TaskList tasksByDay={tasksByDay} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f4f4f4',
+    padding: 20,
   },
 });
-
-export default App;
