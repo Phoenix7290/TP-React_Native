@@ -31,7 +31,10 @@ const PropositionListScreen = () => {
           data={propositions}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <PropositionItem title={item.titulo} description={item.descricaoTipo} />
+            <PropositionItem
+              title={`${item.siglaTipo} ${item.numero}/${item.ano}`}
+              description={item.ementa}
+            />
           )}
           refreshing={refreshing}
           onRefresh={handleRefresh}

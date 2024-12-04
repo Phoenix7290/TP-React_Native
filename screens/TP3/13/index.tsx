@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import PropositionListScreen from "./screens/PropositionListScreen";
 
 const App = () => {
+  // Funciona com algum atraso de tempo.
   return (
     <SafeAreaView style={styles.container}>
       <PropositionListScreen />
